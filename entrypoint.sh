@@ -1,7 +1,7 @@
-cd /v2raybin
-echo -e "$CONFIG_JSON" > config.json
-if [ "$CERT_PEM" != "$KEY_PEM" ]; then
-  echo -e "$CERT_PEM" > cert.pem
-  echo -e "$KEY_PEM"  > key.pem
-fi
-./v2ray
+#!/bin/sh
+# V2Ray new configuration
+cat <<-EOF > /etc/v2ray/config.json
+$CONFIG_JSON
+EOF
+# Run V2Ray
+/usr/bin/v2ray/v2ray -config=/etc/v2ray/config.json
